@@ -14,6 +14,10 @@ namespace RevoltJS.Controllers
         {
             return View();
         }
+        public IActionResult Logos()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

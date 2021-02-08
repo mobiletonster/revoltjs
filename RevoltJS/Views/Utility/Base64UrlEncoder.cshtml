@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Base64Url Encoder</h1>
+<p>Base64URL Encoder is a free online tool for encoding text into Base64URL values.</p>
+<h2>Text</h2>
+<textarea id="text-input" class="form-control" style="min-height:225px;"> 
+</textarea>
+<button id="base64urlencode" class="btn btn-primary" onclick="sendToEncoder()">Encode</button>
+<h2>Base64Url</h2>
+<textarea id="text-output" class="form-control" style="min-height:225px;">
+</textarea>
+<script type="text/javascript">
+    function sendToEncoder() {
+        var input = document.getElementById("text-input");
+        var data = new FormData();
+        data.append("input", input.value);
+        console.log(data);
+        fetch("/api/utilities/base64urlencode", {
+            method: "POST",
+            body: data
+        }).then(response => {
+            if (response.ok) {
+                response.text().then(data => {
+                    document.getElementById("text-output").value = data;
+                })
+            }
+        })
+    }
+
+    //fetch(`/api/class/${id}`,
+    //    {
+    //        method: method,
+    //        body: editorForm
+    //    }
+    //).then(response => {
+    //    console.log(response);
+    //    if (response.ok) {
+    //        $('#modal-editor').modal('hide');
+    //        document.getElementById("editor").innerHTML = "";
+    //        response.text().then(data => {
+    //            if (id == 0) {
+    //                var zero = document.getElementById(id);
+    //                var cloned = document.createElement('div');
+    //                cloned.id = 0;
+    //                zero.after(cloned);
+    //                zero.innerHTML = data;
+    //                zero.id = zero.querySelector("[data-id]").getAttribute("data-id");
+    //                location.href = `#${zero.id}`;
+    //            } else {
+    //                document.getElementById(id).innerHTML = data;
+    //            }
+    //        });
+    //    } else {
+    //        alert("An error occured while saving.");
+    //    }
+    //})   
+</script>
