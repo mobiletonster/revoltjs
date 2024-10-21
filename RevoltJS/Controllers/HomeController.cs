@@ -18,6 +18,10 @@ namespace RevoltJS.Controllers
         {
             return View();
         }
+        public IActionResult GravityPoints()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
